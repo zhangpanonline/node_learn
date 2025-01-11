@@ -1,6 +1,8 @@
 const Admin = require('../models/Admin')
+const md5 = require('md5')
 
 exports.add = async function(obj) {
+    obj.loginPwd = md5(obj.loginPwd)
     const ins = await Admin.create(obj)
     return ins.toJSON()
 }
@@ -36,9 +38,38 @@ exports.update = async function(id, obj = {}) {
     //     return '数据不存在'
     // }
     // 方式2
+    if (obj.loginPwd) {
+        obj.loginPwd = md5(obj.loginPwd)
+    }
     return await Admin.update(obj, {
         where: {
             id
         }
     })
+}
+
+exports.login = async function(loginId, loginPwd) {
+    const result = await Admin.findOne({
+        where: {
+            loginId, loginPwd: md5(loginPwd)
+        }
+    })
+    if (result) {
+        if (result.loginId !== loginId) {
+            return '用户名不正确'
+        } else {
+            return result.toJSON()
+        }
+    } else {
+        return '用户不存在'
+    }
+}
+
+exports.getAdminById = async function(id) {
+    const res = await Admin.findByPk(id)
+    if (res) {
+        return res.toJSON()
+    } else {
+        return null
+    }
 }

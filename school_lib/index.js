@@ -1,21 +1,18 @@
-const adminServ = require('./services/admin')
-const bookServ = require('./services/book')
-const classServ = require('./services/class')
-const studentServ = require('./services/student')
+// require('./models/relation')
+const md5 = require('md5')
+const dayjs = require('dayjs')
+// const adminServ = require('./services/admin')
+// const bookServ = require('./services/book')
+// const classServ = require('./services/class')
+// const studentServ = require('./services/student')
+// const sequelize = require('./models/db')
 
-// adminServ.add({
-//     loginId: 'a123',
-//     loginPwd: 'b123',
-//     name: '123'
-// }).then(res => {
+// adminServ.login('root', '123').then(res => {
 //     console.log(res)
+//     sequelize.close()
 // })
+console.log(dayjs().valueOf(), '时间戳')
 
+console.log(dayjs().unix(), '时间戳')
 
-// adminServ.delete(2).then(res => {
-//     console.log(res)
-// })
-
-// adminServ.update(3, { name: '333' }).then(res => {
-//     console.log(res)
-// })
+console.log(dayjs().locale())

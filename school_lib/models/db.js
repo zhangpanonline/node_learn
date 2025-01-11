@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize')
 const sequelize = new Sequelize('zhangpan', 'zhangpan', 'PWeoghCeb5vXIZB1', {
     host: 'mysql.sqlpub.com',
     dialect: 'mysql',
-    logging: false
+    // logging: true
 })
 
 module.exports = sequelize
