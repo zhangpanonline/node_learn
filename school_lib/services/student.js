@@ -120,7 +120,7 @@ exports.getStudents = async function(page = 1, limit = 10, sex = -1, name = '') 
         limit,
         where,
         // 查询部分字段
-        attributes: ['id', 'name', 'sex'],
+        attributes: ['id', 'name', 'sex', 'birthday', 'mobile', 'age'],
         // 查询关联关系
         include: [Class]
     })
