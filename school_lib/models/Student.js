@@ -6,7 +6,7 @@ module.exports = sequelize.define('Student', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    birthdady: {
+    birthday: {
         type: DataTypes.DATE,
         allowNull: false
     },

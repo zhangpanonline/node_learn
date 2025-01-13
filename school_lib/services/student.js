@@ -1,8 +1,55 @@
 const Student = require('../models/Student')
 const Class = require('../models/Class')
 const { Op } = require('sequelize')
+const { async, validators } = require('validate.js')
 
 exports.add = async function(obj) {
+    validators.classExits = async function(value) {
+        const ins = await Class.findByPk(value)
+        if (!ins) {
+            return '班级不存在'
+        }
+        return
+    }
+    const rule = {
+        name: {
+            presence: {
+                allowEmpty: false
+            },
+            type: 'string',
+            length: {
+                minimum: 1,
+                maximum: 10
+            }
+        },
+        birthday: {
+            presence: true,
+            datetime: {
+                dateOnly: true,
+                earliest: '1949-10-01',
+                latest: new Date()
+            }
+        },
+        sex: {
+            presence: true,
+            type: 'boolean',
+        },
+        mobile: {
+            presence: true,
+            format: {
+                pattern: /^1[3456789]\d{9}$/
+            }
+        },
+        ClassId: {
+            presence: true,
+            numericality: {
+                onlyInteger: true,
+                strict: false
+            },
+            classExits: true
+        }
+    }
+    await async(obj, rule)
     const ins = await Student.create(obj)
     return ins.toJSON()
 }

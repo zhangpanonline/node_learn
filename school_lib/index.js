@@ -1,18 +1,14 @@
-// require('./models/relation')
-const md5 = require('md5')
-const dayjs = require('dayjs')
+require('./init')
 // const adminServ = require('./services/admin')
 // const bookServ = require('./services/book')
 // const classServ = require('./services/class')
-// const studentServ = require('./services/student')
+const studentServ = require('./services/student')
 // const sequelize = require('./models/db')
 
-// adminServ.login('root', '123').then(res => {
-//     console.log(res)
-//     sequelize.close()
-// })
-console.log(dayjs().valueOf(), '时间戳')
 
-console.log(dayjs().unix(), '时间戳')
 
-console.log(dayjs().locale())
+studentServ.add({name: '张三', birthday: '2000-01-01', mobile: '13345678911', sex: true, ClassId: '16', deletedAt: '2025-01-01'}).then(res => {
+    console.log(res)
+}).catch(err => {
+    console.log(err, 'err')
+})

@@ -6,7 +6,7 @@ const result = Mock.mock({
         {
             "id|+1": 1,
             name: '@cname',
-            birthdady: '@date',
+            birthday: '@date',
             'sex|1-2': true,
             mobile: /^1\d{10}/,
             'ClassId|1-16': 1
