@@ -1,8 +1,0 @@
-2025-01-14 09:22:38 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
-2025-01-14 09:22:38 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
-2025-01-14 09:22:38 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
-2025-01-14 09:22:38 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
-2025-01-14 09:22:38 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
-2025-01-14 09:22:38 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
-2025-01-14 09:22:38 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
-2025-01-14 09:22:38 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
