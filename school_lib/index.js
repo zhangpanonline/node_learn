@@ -1,5 +1,4 @@
-require('./log')
-// require('./init')
+require('./init')
 // const sequelize = require('./models/db')
 // const adminServ = require('./services/admin')
 // const bookServ = require('./services/book')
