@@ -32,7 +32,7 @@ app.get('/abc/:id', (req, res) => {
     // 等价于
     // res.status(302).location('https://www.baidu.com').end()
     // 等价于
-    res.redirect(302, 'https://www.baidu.com')
+    // res.redirect(302, 'https://www.baidu.com')
 
     
     console.log('========================', new Date().getSeconds())
