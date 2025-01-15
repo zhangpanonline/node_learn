@@ -1,7 +1,6 @@
 
 const express = require('express')
 const path = require('path')
-const errorMiddleware = require('./errorMiddleware')
 
 const app = express()
 
@@ -22,7 +21,11 @@ app.use(
   express.json()
 )
 
-app.use(errorMiddleware)
+// 处理 api 请求
+app.use('/api/student', require('./api/student'))
+
+
+app.use(require('./errorMiddleware'))
 
 app.listen(9527, () => {
   console.log('Server is running on port 9527')

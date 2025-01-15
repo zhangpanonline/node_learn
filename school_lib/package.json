@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "node index.js",
+    "server": "node --trace-deprecation index.js",
     "start": "pnpx nodemon -x pnpm run server"
   },
   "keywords": [],
