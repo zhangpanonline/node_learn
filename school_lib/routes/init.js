@@ -8,8 +8,21 @@ const app = express()
 // 当请求时，会根据请求路径(req.path)，从指定的目录中寻找是否存在文件，如果存在，直接响应文件内容，而不再移交给后续的中间件。
 // 如果不存在，则直接移交给后续的中间件
 app.use('/static', express.static(path.resolve(__dirname, '../public')))
+// app.use('/static', (req) => {
+//   console.log(req.baseUrl) // /static
+//   console.log(req.path) // /abc
+// })
 
-app.use('/ab', errorMiddleware)
+app.use(
+  express.urlencoded({
+    extended: true
+  })
+)
+app.use(
+  express.json()
+)
+
+app.use(errorMiddleware)
 
 app.listen(9527, () => {
   console.log('Server is running on port 9527')
