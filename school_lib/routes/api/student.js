@@ -1,26 +1,74 @@
 const express = require('express')
 const route = express.Router()
+const stuServ = require('../../services/student')
 
-route.get('/',(req, res) => {
-    res.send('分页获取学生')
+route.get('/', async (req, res) => {
+    const page = req.query.page || 1
+    const limit = req.query.limit || 10
+    const sex = req.query.sex || -1
+    const name = req.query.name || ''
+    const result = await stuServ.getStudents(+page, +limit, +sex, name)
+    res.send({
+        total: result.count,
+        data: result.rows
+    })
 })
 
-route.get('/:id', (req, res) => {
-    console.log(req.baseUrl)
-    console.log(req.path)
-    res.send('获取单个学生')
+route.get('/:id', async (req, res) => {
+    res.send(await stuServ.getStudentById(req.params.id))
 })
 
-route.post('/', (req, res) => {
-    res.send('添加学生')
+route.post('/', async (req, res) => {
+    try {
+        const result = await stuServ.add({
+            ...req.query,
+            sex: req.query === 'true',
+            ClassId: Number(req.query.ClassId),
+        })
+        res.send(result)
+    } catch(err) {
+        console.log(err)
+    }
 })
 
-route.put('/:id', (req, res) => {
-    res.send('修改学生')
+route.put('/:id', async (req, res) => {
+    try {
+        const obj = req.query
+        for(let k in obj) {
+            if (!obj[k]) {
+                delete obj[k]
+            }
+        }
+        if (obj.sex) {
+            obj.sex = obj.sex === 'true'
+        }
+        if (obj.ClassId) {
+            obj.ClassId = Number(obj.ClassId)
+        }
+        const result = await stuServ.update(req.params.id, obj)
+        if (Array.isArray(result) && result[0] === 1) {
+            res.send(await stuServ.getStudentById(req.params.id))
+        } else {
+            res.send({
+                code: 200,
+                message: '操作失败'
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
 })
 
-route.delete('/:id', (req, res) => {
-    res.send('删除学生')
+route.delete('/:id', async (req, res) => {
+    try {
+        const result = await stuServ.delete(req.params.id)
+        res.send({
+            code: 200,
+            message: result === 1 ? '操作成功' : '操作失败'
+        })
+    } catch (error) {
+        console.error(error)
+    }
 })
 
 module.exports = route

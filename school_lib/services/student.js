@@ -85,6 +85,45 @@ exports.update = async function(id, obj = {}) {
     //     return '数据不存在'
     // }
     // 方式2
+    validators.classExits = async function(value) {
+        const ins = await Class.findByPk(value)
+        if (!ins) {
+            return '班级不存在'
+        }
+        return
+    }
+    const rule = {
+        name: {
+            type: 'string',
+            length: {
+                minimum: 1,
+                maximum: 10
+            }
+        },
+        birthday: {
+            datetime: {
+                dateOnly: true,
+                earliest: '1949-10-01',
+                latest: new Date()
+            }
+        },
+        sex: {
+            type: 'boolean',
+        },
+        mobile: {
+            format: {
+                pattern: /^1[3456789]\d{9}$/
+            }
+        },
+        ClassId: {
+            numericality: {
+                onlyInteger: true,
+                strict: false
+            },
+            classExits: false
+        }
+    }
+    await async(obj, rule)
     return await Student.update(obj, {
         where: {
             id
@@ -125,4 +164,20 @@ exports.getStudents = async function(page = 1, limit = 10, sex = -1, name = '') 
         include: [Class]
     })
     return JSON.parse(JSON.stringify(res))
+}
+
+exports.getStudentById = async function(id) {
+    try {
+        const stu = await Student.findByPk(id)
+        const clas = await Class.findByPk(stu.ClassId)
+        return {
+            ...stu.toJSON(),
+            Class: clas.toJSON()
+        }
+    } catch (error) {
+        return {
+            code: 500,
+            message: error.message
+        }
+    }
 }
