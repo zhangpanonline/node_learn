@@ -53,16 +53,22 @@ exports.login = async function(loginId, loginPwd) {
     const result = await Admin.findOne({
         where: {
             loginId, loginPwd: md5(loginPwd)
+        },
+        attributes: {
+            exclude: ['loginPwd']
         }
     })
     if (result) {
-        if (result.loginId !== loginId) {
-            return '用户名不正确'
-        } else {
-            return result.toJSON()
+        return {
+            code: 200,
+            message: '登录成功',
+            data: result.toJSON()
         }
     } else {
-        return '用户不存在'
+        return {
+            code: 500,
+            message: '请检查用户名或密码'
+        }
     }
 }
 
@@ -83,6 +89,9 @@ exports.getAdmins = async function(page = 1, limit = 10, name = '') {
             name: {
                 [Op.like]: `%${name}%`
             }
+        },
+        attributes: {
+            exclude: ['loginPwd']
         }
     })
     return JSON.parse(JSON.stringify(ins))
