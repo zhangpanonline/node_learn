@@ -23,6 +23,9 @@ app.use(
 
 // 处理 api 请求
 app.use('/api/student', require('./api/student'))
+app.use('/api/admin', require('./api/admin'))
+app.use('/api/class', require('./api/class'))
+app.use('/api/book', require('./api/book'))
 
 
 app.use(require('./errorMiddleware'))

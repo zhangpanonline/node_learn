@@ -1,4 +1,5 @@
 const Class = require('../models/Class')
+const {Op} = require('sequelize')
 
 exports.add = async function(obj) {
     const ins = await Class.create(obj)
@@ -41,4 +42,24 @@ exports.update = async function(id, obj = {}) {
             id
         }
     })
+}
+
+exports.get = async function(page = 1, limit = 10, name = '') {
+    const where = {}
+    if (name) {
+        where.name = {
+            [Op.like]: `%${name}%`
+        }
+    }
+    const ins = await Class.findAndCountAll({
+        limit,
+        offset: (page - 1) * limit,
+        where
+    })
+    return JSON.parse(JSON.stringify(ins))
+}
+
+exports.getById = async function(id) {
+    const ins = await Class.findByPk(id)
+    return ins.toJSON()
 }

@@ -1,5 +1,6 @@
 const Admin = require('../models/Admin')
 const md5 = require('md5')
+const { Op } = require('sequelize')
 
 exports.add = async function(obj) {
     obj.loginPwd = md5(obj.loginPwd)
@@ -72,4 +73,17 @@ exports.getAdminById = async function(id) {
     } else {
         return null
     }
+}
+
+exports.getAdmins = async function(page = 1, limit = 10, name = '') {
+    const ins = await Admin.findAndCountAll({
+        limit,
+        offset: (page - 1) * limit,
+        where: {
+            name: {
+                [Op.like]: `%${name}%`
+            }
+        }
+    })
+    return JSON.parse(JSON.stringify(ins))
 }

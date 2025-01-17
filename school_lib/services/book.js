@@ -1,4 +1,5 @@
 const Book = require('../models/Book')
+const { Op } = require('sequelize')
 
 exports.add = async function(obj) {
     const ins = await Book.create(obj)
@@ -41,4 +42,28 @@ exports.update = async function(id, obj = {}) {
             id
         }
     })
+}
+
+exports.get = async function(page = 1, limit = 10, name = '') {
+    try {
+        const where = {}
+        if (name) {
+            where.name = {
+                [Op.like]: `%${name}%`
+            }
+        }
+        const ins = await Book.findAndCountAll({
+            limit,
+            offset: (page - 1) * limit,
+            where
+        })
+        return JSON.parse(JSON.stringify(ins))
+    } catch (error) {
+        console.error(error.message)
+    }
+}
+
+exports.getById = async function(id) {
+    const ins = await Book.findByPk(id)
+    return ins.toJSON()
 }
