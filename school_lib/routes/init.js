@@ -30,7 +30,8 @@ app.use('/api/login', require('./api/login'))
 
 
 app.use(require('./errorMiddleware'))
-app.listen(80, "::", () => {
+// app.listen(80, "::", () => {
+app.listen(80, () => {
   console.log('Server is running on port 9527')
 })
 
