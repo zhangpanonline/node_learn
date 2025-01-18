@@ -30,8 +30,11 @@ app.use('/api/login', require('./api/login'))
 
 
 app.use(require('./errorMiddleware'))
-// app.listen(80, "::", () => {
-app.listen(80, () => {
+/**
+ * 在linux 下运行会报错 : nodejs: listen EACCES: permission denied 0.0.0.0:80
+ * 解决方法：https://stackoverflow.com/questions/60372618/nodejs-listen-eacces-permission-denied-0-0-0-080
+ */
+app.listen(80, "::", () => {
   console.log('Server is running on port 9527')
 })
 
