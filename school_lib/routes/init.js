@@ -12,6 +12,14 @@ app.use('/static', express.static(path.resolve(__dirname, '../public')))
 //   console.log(req.path) // /abc
 // })
 
+/**
+ * 加入 cookie-parser 中间件
+ * 加入之后，会在 req 对象中注入cookies属性，用于获取所有请求传递过来的cookie
+ * 加入之后，会在 res 对象中注入cookie方法，用于设置cookie
+ */
+app.use(require('cookie-parser')())
+app.use(require('./tokenMiddleware'))
+
 app.use(
   express.urlencoded({
     extended: true
@@ -34,7 +42,7 @@ app.use(require('./errorMiddleware'))
  * 在linux 下运行会报错 : nodejs: listen EACCES: permission denied 0.0.0.0:80
  * 解决方法：https://stackoverflow.com/questions/60372618/nodejs-listen-eacces-permission-denied-0-0-0-080
  */
-app.listen(80, "::", () => {
+app.listen(9527, '::', () => {
   console.log('Server is running on port 9527')
 })
 
