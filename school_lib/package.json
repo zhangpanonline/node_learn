@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "node index.js",
-    "start": "pnpx nodemon -x pnpm run server"
+    "start": "pnpx nodemon -x node index.js",
+    "inspect": "pnpx nodemon -x node --inspect index.js"
   },
   "keywords": [],
   "author": "",
