@@ -3,7 +3,7 @@ const path = require('path');
 log4js.configure({
   appenders: {
     school_lib: {
-      type: 'Datefile',
+      type: 'file',
       filename: path.join(__dirname, 'logs/default', 'school_lib.log'),
       // 配置文件最大字节数
       maxLogSize: 1024 * 1024,
@@ -18,7 +18,7 @@ log4js.configure({
       }
     },
     sql: {
-      type: 'Datefile',
+      type: 'file',
       filename: path.join(__dirname, 'logs/sql', 'sql.log'),
       // 配置文件最大字节数
       maxLogSize: 1024 * 1024,
