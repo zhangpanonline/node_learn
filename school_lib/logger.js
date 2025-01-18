@@ -5,7 +5,6 @@ log4js.configure({
     school_lib: {
       type: 'datefile',
       filename: path.join(__dirname, 'logs/default', 'school_lib.log'),
-      pattern: '-yyyy-MM-dd.log',
       // 配置文件最大字节数
       maxLogSize: 1024 * 1024,
       keepFileExt: true, // 备份时是否保留文件扩展名
@@ -21,7 +20,6 @@ log4js.configure({
     sql: {
       type: 'datefile',
       filename: path.join(__dirname, 'logs/sql', 'sql.log'),
-      pattern: '-yyyy-MM-dd.log',
       // 配置文件最大字节数
       maxLogSize: 1024 * 1024,
       keepFileExt: true, // 备份时是否保留文件扩展名
