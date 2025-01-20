@@ -1,6 +1,7 @@
 
 const express = require('express')
 const path = require('path')
+const cors = require('cors')
 
 const app = express()
 
@@ -13,7 +14,18 @@ app.use('/static', express.static(path.resolve(__dirname, '../public')))
 // })
 
 // CORS
-app.use(require('./corsMiddleware'))
+// app.use(require('./corsMiddleware')) // 手写
+// 使用cors中间件
+app.use(cors({
+  origin(origin, cb) {
+    if (['http://127.0.0.1:5500'].includes(origin)) {
+      cb(null, true)
+    } else {
+      cb(new Error('不允许跨域'))
+    }
+  },
+  credentials: true
+}))
 
 /**
  * 加入 cookie-parser 中间件

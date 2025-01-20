@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
     // 3. 附带身份凭证的请求
     //  1. 客户端要带cookie的话，ajax请求要设置 withCredentials: true；fetch 请求要设置 credentials: 'include'
     //  2. 客户端带了cookie，服务端也得做相应处理，否则依然会跨域
-    res.header('Access-Control-Allow-Credentials', 'true')
+    res.header('Access-Control-Allow-Credentials', true)
 
     // 2. 预检请求
     if (req.method === 'OPTIONS') {

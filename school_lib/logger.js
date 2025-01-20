@@ -6,7 +6,7 @@ log4js.configure({
       type: 'file',
       filename: path.join(__dirname, 'logs/default', 'school_lib.log'),
       // 配置文件最大字节数
-      maxLogSize: 1024 * 1024 * 1024,
+      maxLogSize: 1024 * 1024 * 1024 * 1024,
       keepFileExt: true, // 备份时是否保留文件扩展名
       daysToKeep: 3, // 保留最近3天的日志文件，为0则不删除
       backups: 3, // 备份文件的数量
