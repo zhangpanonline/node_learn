@@ -30,16 +30,21 @@ module.exports = (req, res, next) => {
         return
     }
 
-    let token = req.cookies.token;
-    if (!token) {
-        token = req.headers.authorization
-    }
-    if (!token) {
-        res.status(403).send({code: 403, message: 'token不存在'})
-    }
+    // let token = req.cookies.token;
+    // if (!token) {
+    //     token = req.headers.authorization
+    // }
+    // if (!token) {
+    //     res.status(403).send({code: 403, message: 'token不存在'})
+    // }
 
-    // 验证token
-    const auth = decrypt(token)
-    req.userId = auth
-    next()
+    // // 验证token
+    // const auth = decrypt(token)
+    // req.userId = auth
+    console.log(req.session, '###')
+    if (req.session.userInfo) {
+        next()
+    } else {
+        res.status(403).send({code: 403, message: '用户未登录'})
+    }
 }

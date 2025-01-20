@@ -6,10 +6,31 @@
     <title>Document</title>
 </head>
 <body>
-    <h1></h1>
+    <button id="login" >登录</button>
+    <button id="add" >添加</button>
 </body>
 </html>
 
 <script>
-    fetch('http://127.0.0.1:9527/api/student', { headers: {'content-type': 'application/json' }, method: 'POST', credentials: 'include' }).then(res => res.json()).then(res => console.log(res))
+    add.onclick = () => {
+        fetch('http://127.0.0.1:9527/api/student', { headers: {'content-type': 'application/json' }, method: 'POST', credentials: 'include' }).then(res => res.json()).then(res => console.log(res))
+    }
+
+
+    login.onclick = () => {
+        fetch('http://127.0.0.1:9527/api/login?loginId=root&loginPwd=123456', {
+            headers: {
+                'content-type': 'application/json',
+            },
+            method: 'POST'
+        }).then(r => r.json()).then(r => console.log(r))
+    }
+
+
+
+
+
+
+
+
 </script>

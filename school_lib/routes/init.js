@@ -1,9 +1,15 @@
 
 const express = require('express')
+const session = require('express-session')
 const path = require('path')
 const cors = require('cors')
 
 const app = express()
+
+app.use(session({
+  secret: 'nodejs',
+  name: 'sessionid'
+}))
 
 // 当请求时，会根据请求路径(req.path)，从指定的目录中寻找是否存在文件，如果存在，直接响应文件内容，而不再移交给后续的中间件。
 // 如果不存在，则直接移交给后续的中间件
