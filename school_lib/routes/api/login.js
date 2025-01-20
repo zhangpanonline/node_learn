@@ -19,6 +19,7 @@ route.post('/', async (req, res) => {
         res.header('authorization', auth)
     }
     res.send(result)
+    return
 })
 
 module.exports = route

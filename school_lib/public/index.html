@@ -9,3 +9,7 @@
     <h1>Express</h1>
 </body>
 </html>
+
+<script>
+    fetch('http://127.0.0.1:9527/api/student', { headers: {'content-type': 'application/json' }, method: 'POST', credentials: 'include' }).then(res => res.json()).then(res => console.log(res))
+</script>

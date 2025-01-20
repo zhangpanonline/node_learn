@@ -6,6 +6,7 @@ module.exports = (err, req, res, next) => {
             code: 500,
             msg: err instanceof Error ? err.message : err
         })
+        return
     } else {
         next()
     }

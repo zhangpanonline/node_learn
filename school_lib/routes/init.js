@@ -12,6 +12,9 @@ app.use('/static', express.static(path.resolve(__dirname, '../public')))
 //   console.log(req.path) // /abc
 // })
 
+// CORS
+app.use(require('./corsMiddleware'))
+
 /**
  * 加入 cookie-parser 中间件
  * 加入之后，会在 req 对象中注入cookies属性，用于获取所有请求传递过来的cookie
@@ -19,6 +22,7 @@ app.use('/static', express.static(path.resolve(__dirname, '../public')))
  */
 app.use(require('cookie-parser')())
 app.use(require('./tokenMiddleware'))
+
 
 app.use(
   express.urlencoded({

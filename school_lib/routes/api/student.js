@@ -12,10 +12,12 @@ route.get('/', async (req, res) => {
         total: result.count,
         data: result.rows
     })
+    return
 })
 
 route.get('/:id', async (req, res) => {
     res.send(await stuServ.getStudentById(req.params.id))
+    return
 })
 
 route.post('/', async (req, res) => {
@@ -26,6 +28,7 @@ route.post('/', async (req, res) => {
             ClassId: Number(req.query.ClassId),
         })
         res.send(result)
+        return
     } catch(err) {
         console.log(err)
     }
@@ -48,11 +51,13 @@ route.put('/:id', async (req, res) => {
         const result = await stuServ.update(req.params.id, obj)
         if (Array.isArray(result) && result[0] === 1) {
             res.send(await stuServ.getStudentById(req.params.id))
+            return
         } else {
             res.send({
                 code: 200,
                 message: '操作失败'
             })
+            return
         }
     } catch (error) {
         console.log(error)
@@ -66,6 +71,7 @@ route.delete('/:id', async (req, res) => {
             code: 200,
             message: result === 1 ? '操作成功' : '操作失败'
         })
+        return
     } catch (error) {
         console.error(error)
     }
