@@ -1405,3 +1405,611 @@
 2025-01-21 09:41:13 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
 2025-01-21 09:41:13 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
 2025-01-21 09:41:15 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'root' AND `Admin`.`loginPwd` = 'e10adc3949ba59abbe56e057f20f883e')) LIMIT 1;
+2025-01-21 14:44:16 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:44:16 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:44:16 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:44:16 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:19 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:44:20 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:44:20 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:44:20 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:44:20 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:44:20 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:44:21 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:44:21 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:21 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:44:22 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:44:22 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:44:22 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:44:22 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:44:22 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:22 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:44:22 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:22 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:22 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:44:22 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:44:22 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:44:22 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:44:48 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:44:48 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:44:48 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:44:48 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:50 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:44:50 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:44:51 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:44:51 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:44:51 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:44:51 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:44:51 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:51 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:44:51 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:44:52 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:44:52 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:44:52 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:44:52 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:44:52 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:44:53 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:44:53 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:44:53 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:46:12 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:46:12 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:46:12 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:46:12 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:18 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:46:19 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:46:19 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:46:19 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:46:20 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:46:20 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:46:20 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:20 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:46:20 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:46:20 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:46:20 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:46:21 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:46:21 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:46:22 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:46:22 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:46:22 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:46:22 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:23 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:24 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:24 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:46:24 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:46:24 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:46:24 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:46:24 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:46:24 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:24 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:46:24 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:24 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:25 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:46:25 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:46:25 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:46:25 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:46:50 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:46:50 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:46:50 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:46:51 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:52 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:46:53 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:46:53 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:46:54 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:46:54 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:46:54 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:46:54 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:54 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:55 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:46:55 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:46:55 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:46:55 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:46:55 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:46:55 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:55 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:46:55 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:55 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:46:55 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:46:55 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:46:55 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:46:55 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:47:03 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:47:03 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:47:03 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:47:03 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:47:05 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:47:06 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:47:07 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:47:07 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:47:07 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:47:07 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:47:07 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:47:08 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:47:08 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:47:08 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:47:08 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:47:09 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:47:09 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:47:09 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:47:09 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:47:09 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:47:09 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:47:09 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:47:09 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:47:09 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:47:09 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:47:23 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'root' AND `Admin`.`loginPwd` = 'e10adc3949ba59abbe56e057f20f883e')) LIMIT 1;
+2025-01-21 14:47:55 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'root' AND `Admin`.`loginPwd` = 'e10adc3949ba59abbe56e057f20f883e')) LIMIT 1;
+2025-01-21 14:48:56 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'root' AND `Admin`.`loginPwd` = 'e10adc3949ba59abbe56e057f20f883e')) LIMIT 1;
+2025-01-21 14:51:23 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:51:23 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:51:23 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:51:23 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:51:35 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:51:36 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:51:50 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:51:50 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:51:50 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:51:50 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:51:56 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:51:58 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:51:58 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:51:58 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:51:58 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:52:03 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:52:04 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:52:05 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:52:05 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:52:05 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:52:05 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:52:05 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:52:05 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:52:05 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:52:05 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:52:05 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:52:06 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:52:06 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:52:06 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:52:06 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:52:06 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:53:21 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:53:21 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:53:21 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:53:21 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:53:24 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'root' AND `Admin`.`loginPwd` = 'e10adc3949ba59abbe56e057f20f883e')) LIMIT 1;
+2025-01-21 14:53:36 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:53:38 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:53:39 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:53:39 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:53:39 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:53:39 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:53:39 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:53:39 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:53:39 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:53:39 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:53:39 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:53:39 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:53:40 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:53:40 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:53:40 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:53:40 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:53:40 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:53:40 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:54:00 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'root' AND `Admin`.`loginPwd` = 'e10adc3949ba59abbe56e057f20f883e')) LIMIT 1;
+2025-01-21 14:54:20 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:54:20 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:54:20 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:54:20 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:54:20 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'root' AND `Admin`.`loginPwd` = 'e10adc3949ba59abbe56e057f20f883e')) LIMIT 1;
+2025-01-21 14:54:23 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:54:25 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:54:25 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:54:25 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:54:25 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:54:35 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:54:37 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:54:38 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:54:38 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:54:38 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:54:38 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:54:38 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:54:38 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:54:38 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:54:38 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:54:38 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:54:39 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:54:39 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:54:39 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:54:39 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:54:39 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:55:26 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'root' AND `Admin`.`loginPwd` = 'e10adc3949ba59abbe56e057f20f883e')) LIMIT 1;
+2025-01-21 14:56:25 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:56:25 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:56:25 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:56:25 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:32 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:56:33 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:56:34 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:56:34 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:56:34 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:56:34 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:56:34 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:34 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:56:34 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:56:34 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:56:35 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:56:35 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:56:35 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:56:35 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:56:35 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:56:35 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:56:35 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:35 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:36 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:36 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:56:36 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:56:36 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:56:36 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:56:36 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:56:36 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:36 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:56:36 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:36 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:36 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:56:36 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:56:36 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:56:36 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:56:52 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:56:52 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:56:52 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:56:52 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:54 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:56:54 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:56:55 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:56:55 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:56:55 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:56:55 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:56:55 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:56:56 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:56:56 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:56:56 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:56:57 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:56:57 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:56:57 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:56:57 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:57 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:56:57 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:57 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:56:57 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:56:57 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:56:57 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:56:57 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:56:58 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'root' AND `Admin`.`loginPwd` = 'e10adc3949ba59abbe56e057f20f883e')) LIMIT 1;
+2025-01-21 14:56:59 DEBUG sql - Executing (default): UPDATE `Students` SET `name`=? WHERE (`deletedAt` IS NULL AND `id` = ?)
+2025-01-21 14:57:36 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:57:36 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:57:36 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:57:36 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:57:37 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:57:38 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:57:39 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:57:39 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:57:39 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:57:39 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:57:39 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:57:39 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:57:39 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:57:40 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:57:40 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:57:40 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:57:40 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:57:40 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:57:40 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:57:41 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:57:41 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:57:41 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:57:41 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:58:11 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:58:11 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:58:11 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:58:12 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:58:24 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:58:24 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:58:25 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:58:26 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:58:29 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:58:29 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:58:30 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:58:30 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:58:30 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:58:30 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:58:30 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:58:31 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:58:31 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:58:31 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:58:31 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:58:31 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:58:32 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:58:32 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:58:32 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:58:32 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:58:32 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:58:32 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:58:32 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:58:32 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 14:58:47 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:58:47 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 14:58:47 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:58:47 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:59:10 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 14:59:11 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:59:12 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 14:59:12 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:59:12 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 14:59:12 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:59:15 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:59:15 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 14:59:15 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 14:59:15 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:59:15 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 14:59:15 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 14:59:15 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 14:59:15 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:59:15 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 14:59:15 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 14:59:16 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 14:59:16 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 14:59:16 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 14:59:16 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 15:02:33 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:02:33 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 15:02:33 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:02:33 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:34 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 15:02:35 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:02:36 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 15:02:36 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:02:36 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 15:02:36 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:02:36 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:36 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 15:02:36 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 15:02:36 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:02:36 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 15:02:37 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:02:37 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 15:02:37 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:02:37 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 15:02:37 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:02:38 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 15:02:53 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:02:53 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 15:02:53 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:02:53 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:54 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 15:02:55 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:02:56 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 15:02:56 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:02:56 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 15:02:56 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:02:56 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:57 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 15:02:57 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 15:02:57 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:02:57 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 15:02:57 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 15:02:57 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 15:02:57 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:02:57 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 15:02:57 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:02:57 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:57 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:58 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:58 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:02:58 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 15:02:58 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:02:58 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 15:02:58 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:02:58 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:58 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 15:02:58 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:58 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 15:02:58 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 15:02:58 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 15:02:58 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:02:58 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 15:03:48 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'root' AND `Admin`.`loginPwd` = 'e10adc3949ba59abbe56e057f20f883e')) LIMIT 1;
+2025-01-21 15:08:02 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:08:02 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+2025-01-21 15:08:02 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:08:02 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:08:05 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` DATETIME NOT NULL;
+2025-01-21 15:08:05 DEBUG sql - Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:08:06 DEBUG sql - Executing (default): SHOW INDEX FROM `Classes`
+2025-01-21 15:08:06 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:08:06 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Students`;
+2025-01-21 15:08:06 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:08:07 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:08:07 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+2025-01-21 15:08:07 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+2025-01-21 15:08:07 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:08:07 DEBUG sql - Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+2025-01-21 15:08:07 DEBUG sql - Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+2025-01-21 15:08:07 DEBUG sql - Executing (default): SHOW INDEX FROM `Students`
+2025-01-21 15:08:07 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:08:07 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+2025-01-21 15:08:07 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:08:07 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): SHOW INDEX FROM `Admins`
+2025-01-21 15:08:08 DEBUG sql - Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'zhangpan'
+2025-01-21 15:08:08 DEBUG sql - Executing (default): SHOW FULL COLUMNS FROM `Books`;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='zhangpan' AND REFERENCED_TABLE_NAME IS NOT NULL;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+2025-01-21 15:08:08 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+2025-01-21 15:08:08 DEBUG sql - Executing (default): SHOW INDEX FROM `Books`
+2025-01-21 15:08:37 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND (`Admin`.`loginId` = 'root' AND `Admin`.`loginPwd` = 'e10adc3949ba59abbe56e057f20f883e')) LIMIT 1;
+2025-01-21 15:08:39 DEBUG sql - Executing (default): SELECT `id`, `loginId`, `loginPwd`, `name`, `deletedAt` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = 4);

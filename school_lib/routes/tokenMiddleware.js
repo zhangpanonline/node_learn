@@ -1,5 +1,6 @@
 const { pathToRegexp } = require('path-to-regexp')
 const { decrypt } = require('../utils/crypt')
+const jwt = require('./jwt')
 
 const needTokenApi = [
     { method: 'POST', path: '/api/student' },
@@ -17,6 +18,8 @@ const needTokenApi = [
     { method: 'POST', path: '/api/class' },
     { method: 'PUT', path: '/api/class/:id' },
     { method: 'DELETE', path: '/api/class/:id' },
+
+    { method: 'GET', path: '/api/login/whoami' }
 ]
 
 module.exports = (req, res, next) => {
@@ -41,9 +44,17 @@ module.exports = (req, res, next) => {
     // // 验证token
     // const auth = decrypt(token)
     // req.userId = auth
-    if (req.session.userInfo) {
+
+    // if (req.session.userInfo) {
+    //     next()
+    // } else {
+    //     res.status(403).send({code: 403, message: '用户未登录'})
+    // }
+    const result = jwt.verify(req)
+    if (result) {
+        req.userId = result.data
         next()
     } else {
-        res.status(403).send({code: 403, message: '用户未登录'})
+        throw new Error('token失效')
     }
 }
