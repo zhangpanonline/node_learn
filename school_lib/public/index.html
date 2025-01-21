@@ -13,7 +13,7 @@
 
 <script>
     add.onclick = () => {
-        fetch('http://127.0.0.1:9527/api/student', { headers: {'content-type': 'application/json' }, method: 'POST', credentials: 'include' }).then(res => res.json()).then(res => console.log(res))
+        fetch('http://127.0.0.1:9527/api/student/:1?name=张三', { headers: {'content-type': 'application/json' }, method: 'PUT', credentials: 'include' }).then(res => res.json()).then(res => console.log(res))
     }
 
 
@@ -22,15 +22,11 @@
             headers: {
                 'content-type': 'application/json',
             },
+            credentials: 'include',
             method: 'POST'
-        }).then(r => r.json()).then(r => console.log(r))
+        }).then(r => r.json()).then(r => {
+            console.log(r)
+            window.location.href = '/'
+        })
     }
-
-
-
-
-
-
-
-
 </script>

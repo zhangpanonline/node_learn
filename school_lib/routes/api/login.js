@@ -6,7 +6,7 @@ const { encrypt } = require('../../utils/crypt')
 route.post('/', async (req, res) => {
     const result = await adminServ.login(req.query.loginId, req.query.loginPwd)
     if (result.data?.id) {
-        req.session.userInfo = result
+        req.session.userInfo = result.data
         // // 加密
         // const auth = encrypt(result.data.id.toString())
         // // 只有浏览器才会自动处理cookie

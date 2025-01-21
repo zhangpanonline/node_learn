@@ -8,7 +8,8 @@ const app = express()
 
 app.use(session({
   secret: 'nodejs',
-  name: 'sessionid'
+  name: 'sessionid',
+  resave: false,
 }))
 
 // 当请求时，会根据请求路径(req.path)，从指定的目录中寻找是否存在文件，如果存在，直接响应文件内容，而不再移交给后续的中间件。
@@ -24,7 +25,7 @@ app.use('/static', express.static(path.resolve(__dirname, '../public')))
 // 使用cors中间件
 app.use(cors({
   origin(origin, cb) {
-    if (['http://127.0.0.1:5500'].includes(origin)) {
+    if (['http://127.0.0.1:5500', 'null'].includes(origin)) {
       cb(null, true)
     } else {
       cb(new Error('不允许跨域'))
@@ -52,11 +53,11 @@ app.use(
 )
 
 // 处理 api 请求
+app.use('/api/login', require('./api/login'))
 app.use('/api/student', require('./api/student'))
 app.use('/api/admin', require('./api/admin'))
 app.use('/api/class', require('./api/class'))
 app.use('/api/book', require('./api/book'))
-app.use('/api/login', require('./api/login'))
 
 
 app.use(require('./errorMiddleware'))

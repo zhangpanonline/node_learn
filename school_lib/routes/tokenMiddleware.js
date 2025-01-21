@@ -41,7 +41,6 @@ module.exports = (req, res, next) => {
     // // 验证token
     // const auth = decrypt(token)
     // req.userId = auth
-    console.log(req.session, '###')
     if (req.session.userInfo) {
         next()
     } else {

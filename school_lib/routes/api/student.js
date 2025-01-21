@@ -31,6 +31,7 @@ route.post('/', async (req, res) => {
         return
     } catch(err) {
         console.log(err)
+        throw new Error(err)
     }
 })
 
