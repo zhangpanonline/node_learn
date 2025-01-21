@@ -51,6 +51,8 @@ app.use(
   express.json()
 )
 
+app.use(require('./logMiddleware'))
+
 // 处理 api 请求
 app.use('/api/login', require('./api/login'))
 app.use('/api/student', require('./api/student'))
