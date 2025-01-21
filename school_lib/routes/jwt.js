@@ -12,7 +12,8 @@ exports.publish = (res, data, maxAge = 3600 * 24) => {
 }
 
 exports.verify = (req) => {
-    const token = req.headers.authorization
+    let token = req.headers.authorization.split(' ')
+    token = token[1] || token[0]
     if (!token) {
         return null
     }

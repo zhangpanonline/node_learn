@@ -4,6 +4,8 @@ const express = require('express')
 const path = require('path')
 const cors = require('cors')
 
+const history = require('connect-history-api-fallback')
+
 const app = express()
 
 // app.use(session({
@@ -11,6 +13,7 @@ const app = express()
 //   name: 'sessionid',
 //   resave: false,
 // }))
+
 
 // 当请求时，会根据请求路径(req.path)，从指定的目录中寻找是否存在文件，如果存在，直接响应文件内容，而不再移交给后续的中间件。
 // 如果不存在，则直接移交给后续的中间件
@@ -25,11 +28,7 @@ app.use('/static', express.static(path.resolve(__dirname, '../public')))
 // 使用cors中间件
 app.use(cors({
   origin(origin, cb) {
-    if (['http://127.0.0.1:5500', 'null'].includes(origin)) {
-      cb(null, true)
-    } else {
-      cb(new Error('不允许跨域'))
-    }
+    cb(null, origin || '*')
   },
   credentials: true
 }))
@@ -59,6 +58,7 @@ app.use('/api/admin', require('./api/admin'))
 app.use('/api/class', require('./api/class'))
 app.use('/api/book', require('./api/book'))
 
+app.use(history())
 
 app.use(require('./errorMiddleware'))
 /**
