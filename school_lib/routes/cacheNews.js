@@ -8,7 +8,7 @@ module.exports = function (opt = {}) {
     if (content) {
       res.send(JSON.parse(content))
       console.log(
-        '使用了缓存：',
+        '使用了sedis缓存：',
         key,
         '过期时间：',
         await client.sendCommand(['TTL', key])
