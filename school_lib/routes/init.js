@@ -1,4 +1,3 @@
-
 const express = require('express')
 // const session = require('express-session')
 const path = require('path')
@@ -14,7 +13,6 @@ const app = express()
 //   resave: false,
 // }))
 
-
 // 当请求时，会根据请求路径(req.path)，从指定的目录中寻找是否存在文件，如果存在，直接响应文件内容，而不再移交给后续的中间件。
 // 如果不存在，则直接移交给后续的中间件
 app.use('/static', express.static(path.resolve(__dirname, '../public')))
@@ -26,12 +24,14 @@ app.use('/static', express.static(path.resolve(__dirname, '../public')))
 // CORS
 // app.use(require('./corsMiddleware')) // 手写
 // 使用cors中间件
-app.use(cors({
-  origin(origin, cb) {
-    cb(null, origin || '*')
-  },
-  credentials: true
-}))
+app.use(
+  cors({
+    origin(origin, cb) {
+      cb(null, origin || '*')
+    },
+    credentials: true
+  })
+)
 
 /**
  * 加入 cookie-parser 中间件
@@ -41,15 +41,12 @@ app.use(cors({
 app.use(require('cookie-parser')())
 app.use(require('./tokenMiddleware'))
 
-
 app.use(
   express.urlencoded({
     extended: true
   })
 )
-app.use(
-  express.json()
-)
+app.use(express.json())
 
 app.use(require('./logMiddleware'))
 
@@ -59,6 +56,7 @@ app.use('/api/student', require('./api/student'))
 app.use('/api/admin', require('./api/admin'))
 app.use('/api/class', require('./api/class'))
 app.use('/api/book', require('./api/book'))
+app.use('/api/news', require('./api/news'))
 
 app.use(history())
 
@@ -71,8 +69,6 @@ app.listen(9527, '::', () => {
   console.log('Server is running on port 9527')
 })
 
-
-
 // app.get('/abc', (req, res) => {
 //     // 请求
 //     console.log(req.headers)
@@ -80,7 +76,7 @@ app.listen(9527, '::', () => {
 //     console.log(req.query)
 //     console.log(req.params)
 //     console.log(res.method)
-    
+
 //     // 响应
 //     // res.setHeader('AAA', 'BBB')
 //     // res.send(req.query)
