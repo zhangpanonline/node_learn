@@ -1,4 +1,4 @@
 require('./init')
-console.log('========================')
-console.log('========================')
-
+// require('./redis')
+console.log('========================', new Date().getMinutes())
+console.log('========================', new Date().getSeconds())
