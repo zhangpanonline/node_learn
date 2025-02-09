@@ -1,12 +1,13 @@
 const redis = require('redis')
 const client = redis.createClient({
-  host: 'redis://127.0.0.1',
+  host: 'redis://127.0.0.11',
   port: 6379
 })
 client.connect()
 
 client.on('error', (err) => {
   console.log('Error ' + err)
+  client.disconnect()
 })
 
 client.on('connect', async () => {
